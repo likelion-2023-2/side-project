@@ -1,0 +1,16 @@
+.login-wrap {
+    display: flex;
+}
+
+.background-img {
+    width: 61%;
+}
+
+.background-img img {
+    width: 100%;
+}
+
+.login {
+    width: 39%;
+    padding: 80px 40px;
+}

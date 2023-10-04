@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+}
