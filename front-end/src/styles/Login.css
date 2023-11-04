@@ -1,16 +1,139 @@
 .login-wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
     display: flex;
 }
 
 .background-img {
-    width: 61%;
-}
-
-.background-img img {
     width: 100%;
+    background: url('../assets/images/intro.jpg') no-repeat;
+    background-size: cover;
 }
 
 .login {
-    width: 39%;
+    width: 50%;
     padding: 80px 40px;
+}
+
+.title {
+    color: #242424;
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.sub-title {
+    color: #6f6f6f;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.input-box {
+    border: 1px solid;
+    border-color: #dfdfdf;
+    border-radius: 4px;
+    display: block;
+    height: 38px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.input-label{
+    display: block;
+    margin-bottom: 1px;
+    font-size: 10px;
+    color: #8b8b8b;
+}
+
+.input {
+    width: 100%;
+    height: 24px;
+    font-size: 16px;
+    text-align: left;
+    color: #242424;
+    border: none;
+}
+
+.btn {
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    height: 56px;
+    font-size: 16px;
+    padding: 0 16px;
+    background-color: #ffeb60;
+    color: #242424;
+}
+
+.sub-menu {
+    margin-top: 24px;
+    margin-bottom: 34px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-menu li {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.sub-menu li:nth-child(1)::after, .sub-menu li:nth-child(2)::after {
+    height: 12px;
+    width: 3px;
+    color: #8b8b8b;
+    content: "|";
+    margin: 0 8px;
+}
+
+
+.sub-menu li a {
+    color: #8b8b8b;
+    font-size: 16px;
+}
+
+.or {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a5a5a5;
+    font-size: 10px;
+    margin-bottom: 16px;
+}
+
+.or p {
+    padding: 0 24px;
+    word-break: keep-all;
+    text-align: center;
+    position: absolute;
+    background-color: #fff;
+}
+
+.or::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #a5a5a5;
+}
+
+.sns-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sns-list button {
+    width: 40px;
+    height: 40px;
+    all: initial;
+}
+
+.sns-list button:not(:first-child) {
+    margin-left: 24px;
 }
