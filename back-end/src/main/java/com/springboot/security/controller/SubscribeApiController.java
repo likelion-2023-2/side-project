@@ -37,6 +37,7 @@ public class SubscribeApiController {
     @GetMapping("{username}")
     public ResponseEntity<String> subscribe(@PathVariable String username){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         String currentUser = userDetails.getUsername();
         try {
             subscribeService.saveSubscribe(username, currentUser);
