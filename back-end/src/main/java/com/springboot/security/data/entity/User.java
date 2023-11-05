@@ -65,6 +65,8 @@ public class User implements UserDetails {
         return this.roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
+
+
     /**
      * security 에서 사용하는 회원 구분 id
      *

@@ -2,6 +2,7 @@ package com.springboot.security.service.impl;
 
 import com.springboot.security.data.dto.ProductResponseDto;
 import com.springboot.security.data.dto.SubscribeDto;
+import com.springboot.security.data.dto.UserInfoDto;
 import com.springboot.security.data.entity.Product;
 import com.springboot.security.data.entity.Subscribe;
 import com.springboot.security.data.entity.User;
@@ -13,7 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,7 +66,7 @@ public class SubscribeService {
     }
 
     @Transactional
-    public List<SubscribeDto> findSubScibeInfo(UserDetails user){
+    public List<UserInfoDto> findSubScibeInfo(UserDetails user){
         Hibernate.initialize(user);
         User toUser = (User)user;
 
@@ -81,6 +84,15 @@ public class SubscribeService {
                 })
                 .collect(Collectors.toList());
 
-        return subscribeDtoList;
+        List<UserInfoDto> userInfoDtoList = new ArrayList<UserInfoDto>();
+        subscribeDtoList.forEach((subscribeDto)->{
+            UserInfoDto userInfoDto = new UserInfoDto();
+            userInfoDto.setUid(subscribeDto.getAddUser().getUid());
+            userInfoDto.setName(subscribeDto.getAddUser().getName());
+            userInfoDto.setPosts(subscribeDto.getAddUser().getPosts());
+            userInfoDtoList.add(userInfoDto);
+        });
+
+        return userInfoDtoList;
     }
 }

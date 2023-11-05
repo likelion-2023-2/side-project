@@ -38,7 +38,7 @@ public class UserInfoController {
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")
     })
     @GetMapping("{username}")
-    public ResponseEntity<UserDetails> getUserInfo(@PathVariable String username) {
+    public ResponseEntity<UserInfoDto> getUserInfo(@PathVariable String username) {
         long currentTime = System.currentTimeMillis();
         LOGGER.info("[UserDetails] Request Data :: userName : {}", username);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -57,6 +57,11 @@ public class UserInfoController {
         );
         LOGGER.info("[UserDetails] Response Time : {}ms", System.currentTimeMillis() - currentTime);
 
-        return ResponseEntity.ok(user);
+        UserInfoDto userinfo=new UserInfoDto();
+        userinfo.setUid(user.getUid());
+        userinfo.setName(user.getName());
+        userinfo.setPosts(user.getPosts());
+
+        return ResponseEntity.ok(userinfo);
     }
 }
