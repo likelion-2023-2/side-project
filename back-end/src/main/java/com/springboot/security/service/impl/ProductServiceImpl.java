@@ -75,19 +75,14 @@ public class ProductServiceImpl implements ProductService {
     }
     @Transactional
     @Override
-    public ProductResponseDto saveProduct(ProductDto productDto) {
+    public ProductResponseDto saveProduct(ProductDto productDto, User user) {
         LOGGER.info("[saveProduct] productName : {}", productDto.getContent());
         Product product = new Product();
-
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Hibernate.initialize(userDetails);
-        User user = (User) userDetails;
 
         product.setContent(productDto.getContent());
         product.setFilename(productDto.getFilename());
         product.setCreatedAt(LocalDateTime.now());
         product.setUpdatedAt(LocalDateTime.now());
-        Hibernate.initialize(user);
         product.setWriter(user);
 
         Product savedProduct = productRepository.save(product);
