@@ -4,6 +4,8 @@ package com.springboot.security.controller;
 import com.springboot.security.data.dto.ChangeProductNameDto;
 import com.springboot.security.data.dto.ProductDto;
 import com.springboot.security.data.dto.ProductResponseDto;
+import com.springboot.security.data.entity.User;
+import com.springboot.security.data.repository.UserRepository;
 import com.springboot.security.service.ProductService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -32,6 +34,9 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("{number}")
     public ResponseEntity<ProductResponseDto> getProduct(@PathVariable Long number) {
         long currentTime = System.currentTimeMillis();
@@ -57,6 +62,7 @@ public class ProductController {
         return productService.getProductList();
     }
 
+
     @Transactional
     @ApiImplicitParams({
         @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")
@@ -64,7 +70,12 @@ public class ProductController {
     @PostMapping()
     public ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductDto productDto) {
         long currentTime = System.currentTimeMillis();
-        ProductResponseDto productResponseDto = productService.saveProduct(productDto);
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userDetails.getUsername();
+        User user = userRepository.findByName(username);
+        Hibernate.initialize(user.getSubscriptions());
+        Hibernate.initialize(user.getRoles());
+        ProductResponseDto productResponseDto = productService.saveProduct(productDto, user);
 
         LOGGER.info("[createProduct] Response Time : {}ms", System.currentTimeMillis() - currentTime);
         return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
