@@ -1,6 +1,7 @@
 package com.springboot.security.controller;
 
 import com.springboot.security.data.dto.SubscribeDto;
+import com.springboot.security.data.dto.UserInfoDto;
 import com.springboot.security.data.entity.Subscribe;
 import com.springboot.security.data.entity.User;
 import com.springboot.security.data.repository.SubscribeRepository;
@@ -52,10 +53,10 @@ public class SubscribeApiController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")
     })
-    @GetMapping("/get/{username}")
-    public ResponseEntity<List<SubscribeDto>> getSubscribe(@PathVariable String username) {
+    @GetMapping()
+    public ResponseEntity<List<UserInfoDto>> getSubscribe() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<SubscribeDto> subscribeDtoList = subscribeService.findSubScibeInfo(userDetails);
+        List<UserInfoDto> subscribeDtoList = subscribeService.findSubScibeInfo(userDetails);
 
         if (subscribeDtoList == null) {
             return ResponseEntity.notFound().build();
