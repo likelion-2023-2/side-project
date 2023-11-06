@@ -22,5 +22,7 @@ public class ProductResponseDto {
     private String filename;
 
     private User writer;
+    private String book;
+    private String author;
 
 }
