@@ -30,6 +30,8 @@ public class Product {
     private String content;
 
     private String filename;
+    private String title;
+    private String author;
 
     @JsonIgnore
     @ManyToOne

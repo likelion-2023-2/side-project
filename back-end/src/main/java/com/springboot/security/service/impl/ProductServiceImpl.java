@@ -53,8 +53,11 @@ public class ProductServiceImpl implements ProductService {
         ProductResponseDto productResponseDto = new ProductResponseDto();
         productResponseDto.setNumber(product.getNumber());
         productResponseDto.setContent(product.getContent());
-        productResponseDto.setFilename(Paths.get(product.getFilename()).toString());
+        String filename_replace=product.getFilename().toString().replace("\\\\", "/");
+        productResponseDto.setFilename(filename_replace);
         productResponseDto.setWriter(product.getWriter());
+        productResponseDto.setAuthor(product.getAuthor());
+        productResponseDto.setBook(product.getTitle());
 
         return productResponseDto;
     }
@@ -72,8 +75,11 @@ public class ProductServiceImpl implements ProductService {
                     ProductResponseDto productResponseDto = new ProductResponseDto();
                     productResponseDto.setNumber(product.getNumber());
                     productResponseDto.setContent(product.getContent());
-                    productResponseDto.setFilename(Paths.get(product.getFilename()).toString());
+                    String filename_replace=product.getFilename().toString().replace("\\\\", "/");
+                    productResponseDto.setFilename(filename_replace);
                     productResponseDto.setWriter(product.getWriter());
+                    productResponseDto.setAuthor(product.getAuthor());
+                    productResponseDto.setBook(product.getTitle());
                     return productResponseDto;
                 })
                 .collect(Collectors.toList());
@@ -104,14 +110,14 @@ public class ProductServiceImpl implements ProductService {
         }
 
 
-
-
-
-
         product.setContent(productDto.getContent());
-        product.setFilename(newFilePath.toString());
+        String filename_replace=newFilePath.toString().replace("\\", "/");
+        product.setFilename(filename_replace);
+        product.setAuthor(productDto.getAuthor());
+        product.setTitle(productDto.getTitle());
         product.setCreatedAt(LocalDateTime.now());
         product.setUpdatedAt(LocalDateTime.now());
+
         product.setWriter(user);
 
         Product savedProduct = productRepository.save(product);
@@ -120,9 +126,12 @@ public class ProductServiceImpl implements ProductService {
         ProductResponseDto productResponseDto = new ProductResponseDto();
         productResponseDto.setNumber(savedProduct.getNumber());
         productResponseDto.setContent(savedProduct.getContent());
-        productResponseDto.setFilename(newFilePath.toString());
+        String filename=newFilePath.toString().replace("\\", "/");
+        productResponseDto.setFilename(filename);
         Hibernate.initialize(savedProduct.getWriter());
         productResponseDto.setWriter(savedProduct.getWriter());
+        productResponseDto.setAuthor(product.getAuthor());
+        productResponseDto.setBook(product.getTitle());
 
         return productResponseDto;
     }
@@ -141,7 +150,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductResponseDto productResponseDto = new ProductResponseDto();
         productResponseDto.setNumber(changedProduct.getNumber());
-        productResponseDto.setFilename(Paths.get(changedProduct.getFilename()).toString());
+        productResponseDto.setFilename(Paths.get(changedProduct.getFilename()).toString().replace("\\", "/"));
         productResponseDto.setContent(changedProduct.getContent());
 
         return productResponseDto;

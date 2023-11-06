@@ -17,6 +17,8 @@ import java.nio.file.Path;
 public class ProductDto {
 
     private String content;
+    private String title;
+    private String author;
 
     private MultipartFile filename;
 
