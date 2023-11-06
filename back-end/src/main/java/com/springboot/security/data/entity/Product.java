@@ -1,5 +1,6 @@
 package com.springboot.security.data.entity;
 
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 

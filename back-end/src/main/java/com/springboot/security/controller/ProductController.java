@@ -68,7 +68,7 @@ public class ProductController {
         @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")
     })
     @PostMapping()
-    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity<ProductResponseDto> createProduct(@ModelAttribute ProductDto productDto) {
         long currentTime = System.currentTimeMillis();
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = userDetails.getUsername();
