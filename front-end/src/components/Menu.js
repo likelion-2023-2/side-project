@@ -7,7 +7,7 @@ export default function Menu() {
     const [menuItems, setMenu] = useState([]);
 
     useEffect(() => {
-        if (location.pathname === '/main') {
+        if (location.pathname === '/now') {
             setMenu(['NOW', '스토리', '밀리로드']);
         } else if (location.pathname === '/feed') {
             setMenu(['추천', '팔로잉']);

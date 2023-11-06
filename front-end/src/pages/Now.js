@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 
-function Main() {
+function Now() {
     return (
         <div>
             <Header/>
@@ -10,4 +10,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default Now;
