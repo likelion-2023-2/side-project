@@ -86,8 +86,8 @@ private MediaDescriptorDto saveToDir(MultipartFile file) {
     descriptorDto.setStatus(200);
     descriptorDto.setOriginalName(file.getOriginalFilename());
 
-    try {
-        LocalDateTime now = LocalDateTime.now();
+       try {
+        /*LocalDateTime now = LocalDateTime.now();
         String dateFolder = now.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         String targetDir = Paths.get(basePath, dateFolder).toString(); // 사용자에게 보여줄 경로
 
@@ -100,19 +100,22 @@ private MediaDescriptorDto saveToDir(MultipartFile file) {
                 + "_"
                 + file.getOriginalFilename();
 
-        File destFile = new File(dirNow, newFileName);
-        file.transferTo(destFile.toPath()); // 파일 저장
+        File destFile = new File(dirNow, newFileName);*/
+           Path newFilePath = Path.of(basePath, file.getOriginalFilename());
+
+        file.transferTo(newFilePath); // 파일 저장
 
         // 저장된 파일의 상대 경로를 설정
-        descriptorDto.setResourcePath(Paths.get("media", dateFolder, newFileName).toString());
+        // descriptorDto.setResourcePath(Paths.get("media", dateFolder, newFileName).toString());*/
 
-        return descriptorDto;
+
     } catch (IOException e) {
         logger.error(e.getMessage());
         descriptorDto.setMessage("failed");
         descriptorDto.setStatus(500);
         return descriptorDto;
     }
+    return descriptorDto;
 }
 
 }
