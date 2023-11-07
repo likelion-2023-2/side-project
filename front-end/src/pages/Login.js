@@ -49,7 +49,7 @@ function Login() {
                     <button><img src={LoginApple}/></button>
                     <button><img src={LoginGoogle}/></button>
                 </div>
-                <Link to="/main" style={linkStyle}>메인 페이지로 이동 (임시로 이거 클릭)</Link>
+                <Link to="/now" style={linkStyle}>메인 페이지로 이동 (임시로 이거 클릭)</Link>
             </div>
         </div>
     );
