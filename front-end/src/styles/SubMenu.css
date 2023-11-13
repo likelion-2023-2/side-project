@@ -1,5 +1,6 @@
 .sub-menu {
     padding-left: 120px;
+    border-bottom: 1px solid #dfdfdf;
 }
 
 .sub-menu ul {
@@ -17,8 +18,8 @@
 }
 
 .sub-menu ul li a button {
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 13px;
+    font-weight: 500;
     color: #242424;
     padding: 6px 16px;
     border-radius: 100px;
