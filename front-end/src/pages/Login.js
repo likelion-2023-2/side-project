@@ -36,7 +36,7 @@ function Login() {
                         <button className='btn'>로그인</button>
                     </form>
                 </div>
-                <ul className='sub-menu'>
+                <ul className='login-sub-menu'>
                     <li><a>회원가입</a></li>
                     <li><a>비밀번호 찾기</a></li>
                     <li><a>기업회원 로그인</a></li>
@@ -49,7 +49,7 @@ function Login() {
                     <button><img src={LoginApple}/></button>
                     <button><img src={LoginGoogle}/></button>
                 </div>
-                <Link to="/now" style={linkStyle}>메인 페이지로 이동 (임시로 이거 클릭)</Link>
+                <Link to="/today" style={linkStyle}>메인 페이지로 이동 (임시로 이거 클릭)</Link>
             </div>
         </div>
     );

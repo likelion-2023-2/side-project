@@ -1,15 +1,15 @@
 import Header from '../components/Header';
 import Menu from '../components/Menu';
-import SubMenu from '../components/SubMenu';
+import Empty from '../components/Empty';
 
-function Feed() {
+function Following() {
     return (
         <div>
             <Header/>
             <Menu/>
-            <SubMenu/>
+            <Empty/>
         </div>
     );
 }
 
-export default Feed;
+export default Following;
