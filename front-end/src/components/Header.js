@@ -6,7 +6,7 @@ export default function Header() {
 
     function HeaderLink({ to, children }) {
         const location = useLocation();
-        const isActive = (pathname) => location.pathname === pathname;
+        const isActive = (pathname) => location.pathname.startsWith(pathname);
 
         return (
             <Link to={to} className={isActive(to) ? 'active-menu' : ''}>
@@ -24,7 +24,7 @@ export default function Header() {
             </h1>
             <nav>
                 <ul>
-                    <li><HeaderLink to='/now' >투데이</HeaderLink></li>
+                    <li><HeaderLink to='/today' >투데이</HeaderLink></li>
                     <li><HeaderLink to='/feed'>피드</HeaderLink></li>
                     <li><HeaderLink to='/search'>검색</HeaderLink></li>
                     <li><HeaderLink to='/myshelf'>내서재</HeaderLink></li>

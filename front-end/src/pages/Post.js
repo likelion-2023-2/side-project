@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import Menu from '../components/Menu';
 import SubMenu from '../components/SubMenu';
 
-function Feed() {
+function Post() {
     return (
         <div>
             <Header/>
@@ -12,4 +12,4 @@ function Feed() {
     );
 }
 
-export default Feed;
+export default Post;

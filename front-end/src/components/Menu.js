@@ -7,10 +7,12 @@ export default function Menu() {
     const [menuItems, setMenu] = useState([]);
 
     useEffect(() => {
-        if (location.pathname === '/now') {
+        if (location.pathname.includes('/today')) {
             setMenu(['NOW', '스토리', '밀리로드']);
-        } else if (location.pathname === '/feed') {
+        } else if (location.pathname.includes('/feed')) {
             setMenu(['추천', '팔로잉']);
+        }  else {
+            setMenu([]);
         }
     }, [location.pathname]);
 
@@ -20,8 +22,24 @@ export default function Menu() {
                 {menuItems.map((menuItem) => (
                     <li key={menuItem}>
                         <Link
-                            to={`/${menuItem.toLowerCase()}`}
-                            className={location.pathname === `/${menuItem.toLowerCase()}` ? 'active' : ''}
+                            to={
+                                menuItem === '추천' || menuItem === '팔로잉' 
+                                    ? `/feed/${menuItem.toLowerCase()}`
+                                    : location.pathname.includes('/today')
+                                        ? `/today/${menuItem.toLowerCase()}`
+                                        : `/${menuItem.toLowerCase()}`
+                            }
+                            className={
+                                location.pathname === 
+                                    (
+                                        menuItem === '추천' || menuItem === '팔로잉'
+                                            ? `/feed/${menuItem.toLowerCase()}`
+                                            : (location.pathname.includes('/today')
+                                                ? `/today/${menuItem.toLowerCase()}`
+                                                : `/${menuItem.toLowerCase()}`)
+                                    ) 
+                                    ? 'active' : ''
+                            }
                         >
                             {menuItem}
                         </Link>

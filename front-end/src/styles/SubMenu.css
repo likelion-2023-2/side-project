@@ -1,0 +1,27 @@
+.sub-menu {
+    padding-left: 120px;
+}
+
+.sub-menu ul {
+    height: 64px;
+    align-items: center;
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-menu ul li {
+    list-style: none;
+    margin-left: 8px;
+}
+
+.sub-menu ul li a button {
+    font-size: 14px;
+    font-weight: 900;
+    color: #242424;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: none;
+    background-color: #f7f7f7;
+}
